@@ -39,7 +39,15 @@ reports/figures/
 
 # OS / environment
 .env
+.venv/
+.venv312/
 *.log
+
+
+#  Cache / temp files
+.pytest_cache/
+__pycache__/
+.ruff_cache/
 
 
 # spec or intent driven development
