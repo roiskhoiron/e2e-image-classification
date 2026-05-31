@@ -14,17 +14,24 @@ env/
 *.nbconvert.ipynb
 
 # Data — ignore raw & processed (too large / generated)
-data/raw/
-data/processed/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
 
 # Model artifacts (all generated during training/export)
-models_output/checkpoints/
-models_output/saved_model/
-models_output/tflite/
-models_output/tfjs/
+models_output/checkpoints/*
+!models_output/checkpoints/.gitkeep
+models_output/saved_model/*
+!models_output/saved_model/.gitkeep
+models_output/tflite/*
+!models_output/tflite/.gitkeep
+models_output/tfjs/*
+!models_output/tfjs/.gitkeep
 
 # Reports / figures (generated)
-reports/figures/
+reports/figures/*
+!reports/figures/.gitkeep
 
 # macOS
 .DS_Store

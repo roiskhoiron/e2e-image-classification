@@ -29,7 +29,7 @@ class TestBuildCNNModel:
     def test_compile_adds_loss_and_metrics(self):
         model = build_cnn_model(num_classes=3)
         compile_model(model)
-        assert model.loss == "categorical_crossentropy"
+        assert model.loss == "sparse_categorical_crossentropy"
         assert model.compiled_metrics is not None
 
 
@@ -75,7 +75,7 @@ class TestTrainingStep:
         model = build_cnn_model(input_shape=(32, 32, 3), num_classes=2)
         compile_model(model)
         x = tf.random.normal((8, 32, 32, 3))
-        y = tf.keras.utils.to_categorical([0, 1, 0, 1, 0, 1, 0, 1], num_classes=2)
+        y = tf.constant([0, 1, 0, 1, 0, 1, 0, 1], dtype=tf.int32)
         loss_before = model.evaluate(x, y, verbose=0)[0]
         model.fit(x, y, epochs=1, verbose=0)
         loss_after = model.evaluate(x, y, verbose=0)[0]

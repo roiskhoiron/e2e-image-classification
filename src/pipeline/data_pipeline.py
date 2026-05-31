@@ -50,20 +50,32 @@ def build_dataset(
     def _rescale(image, label):
         return tf.cast(image, tf.float32) / 255.0, label
     ds = ds.map(_rescale, num_parallel_calls=AUTOTUNE)
+    ds = ds.cache()
     if augment:
         ds = ds.map(_apply_augmentation, num_parallel_calls=AUTOTUNE)
     ds = ds.batch(batch_size)
-    ds = ds.cache()
     ds = ds.prefetch(AUTOTUNE)
     return ds
 
 
 def _apply_augmentation(image, label):
+    # Random horizontal & vertical flip
     image = tf.image.random_flip_left_right(image, seed=42)
     image = tf.image.random_flip_up_down(image, seed=43)
-    # Random rotation via affine transform
+    # Random rotation by multiples of 90 degrees
+    k = tf.random.uniform([], minval=0, maxval=4, dtype=tf.int32)
+    image = tf.image.rot90(image, k)
+    # Random brightness & contrast
     image = tf.image.stateless_random_brightness(image, max_delta=0.1, seed=(44, 45))
     image = tf.image.stateless_random_contrast(image, lower=0.8, upper=1.2, seed=(46, 47))
+    # Random zoom (scale up/down) then crop/pad back to original size
+    zoom = tf.random.uniform([], 0.9, 1.1)
+    h = tf.cast(tf.shape(image)[0], tf.float32)
+    w = tf.cast(tf.shape(image)[1], tf.float32)
+    h_new = tf.cast(h / zoom, tf.int32)
+    w_new = tf.cast(w / zoom, tf.int32)
+    image = tf.image.resize(image, [h_new, w_new])
+    image = tf.image.resize_with_crop_or_pad(image, tf.cast(h, tf.int32), tf.cast(w, tf.int32))
     return image, label
 
 
