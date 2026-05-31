@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# Data — ignore raw & processed (too large / generated)
+data/raw/
+data/processed/
+
+# Model artifacts (all generated during training/export)
+models_output/checkpoints/
+models_output/saved_model/
+models_output/tflite/
+models_output/tfjs/
+
+# Reports / figures (generated)
+reports/figures/
+
+# macOS
+.DS_Store
+.DS_Store?
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS / environment
+.env
+*.log
+
+
+# spec or intent driven development
+.opencode/ 
+.specsmd/
+.specs-fire/
+goals.md
