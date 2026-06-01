@@ -17,6 +17,7 @@ NOTEBOOK_DIR="notebooks"
 
 # setup environment
 pip install -r requirements.txt
+pip install --upgrade packaging
 pip install --no-deps kagglehub && pip install tensorflowjs
 
 # Ensure kernel uses correct python
