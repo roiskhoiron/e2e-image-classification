@@ -17,11 +17,7 @@ NOTEBOOK_DIR="notebooks"
 
 # setup environment
 pip install -r requirements.txt
-pip install --upgrade packaging
-pip install --no-deps kagglehub && pip install tensorflowjs
-
-# Ensure kernel uses correct python
-python -m ipykernel install --user --name .venv312 --display-name "Python 3.14 (.venv)" --force
+pip install kagglehub tensorflowjs
 
 # Execute notebooks in order
 jupyter nbconvert --to notebook --execute \
