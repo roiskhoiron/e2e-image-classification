@@ -7,15 +7,18 @@ if ! git config user.email >/dev/null; then
   git config --local user.name "roiskhoiron"
 fi
 
-# Activate virtual environment if needed (optional)
-# source .venv/bin/activate
+# Activate virtual environment
+source .venv/bin/activate
 
 # Directory where notebooks live
 NOTEBOOK_DIR="notebooks"
 
 # setup environment
 pip install -r requirements.txt
-pip install tensorflowjs kagglehub
+pip install --no-deps kagglehub && pip install tensorflowjs
+
+# Ensure kernel uses correct python
+python -m ipykernel install --user --name .venv312 --display-name "Python 3.14 (.venv)" --force
 
 # Execute notebooks in order
 jupyter nbconvert --to notebook --execute \
