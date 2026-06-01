@@ -11,7 +11,7 @@ fi
 # source .venv/bin/activate
 
 # Directory where notebooks live
-NOTEBOOK_DIR="$(pwd)/notebooks"
+NOTEBOOK_DIR="notebooks"
 
 # setup environment
 pip install -r requirements.txt
