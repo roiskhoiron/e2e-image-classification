@@ -27,19 +27,19 @@ pip install kagglehub tensorflowjs
 
 echo "Executing notebooks 01...[2/6]"
 jupyter nbconvert --to notebook --execute \
-  "${NOTEBOOK_DIR}/01_data_ingestion.ipynb" --output "${NOTEBOOK_DIR}/01_data_ingestion.ipynb"
+  "${NOTEBOOK_DIR}/01_data_ingestion.ipynb" --output "01_data_ingestion.ipynb"
 
 echo "Executing notebooks 02...[3/6]"
 jupyter nbconvert --to notebook --execute \
-  "${NOTEBOOK_DIR}/02_preprocessing.ipynb" --output "${NOTEBOOK_DIR}/02_preprocessing.ipynb"
+  "${NOTEBOOK_DIR}/02_preprocessing.ipynb" --output "02_preprocessing.ipynb"
 
 echo "Executing notebooks 03...[4/6]"
 jupyter nbconvert --to notebook --execute \
-  "${NOTEBOOK_DIR}/03_model_training.ipynb" --output "${NOTEBOOK_DIR}/03_model_training.ipynb"
+  "${NOTEBOOK_DIR}/03_model_training.ipynb" --output "03_model_training.ipynb"
 
 echo "Executing notebooks 04...[5/6]"
 jupyter nbconvert --to notebook --execute \
-  "${NOTEBOOK_DIR}/04_evaluation.ipynb" --output "${NOTEBOOK_DIR}/04_evaluation.ipynb"
+  "${NOTEBOOK_DIR}/04_evaluation.ipynb" --output "04_evaluation.ipynb"
 
 echo "All notebooks executed successfully."
 
