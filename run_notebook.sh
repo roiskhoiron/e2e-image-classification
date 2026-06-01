@@ -7,8 +7,10 @@ if ! git config user.email >/dev/null; then
   git config --local user.name "roiskhoiron"
 fi
 
-# Activate virtual environment
-source .venv/bin/activate
+# Activate virtual environment (optional – skip if not present)
+if [ -f .venv/bin/activate ]; then
+  source .venv/bin/activate
+fi
 
 # Directory where notebooks live
 NOTEBOOK_DIR="notebooks"
